@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectilePrefab;
 
+    public int score = 0;
+
+    public int lives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
