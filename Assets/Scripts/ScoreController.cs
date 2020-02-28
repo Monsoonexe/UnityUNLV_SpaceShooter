@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreController : MonoBehaviour
+public class ScoreController : RichMonoBehaviour
 {
     public TextMeshProUGUI uiText;
 

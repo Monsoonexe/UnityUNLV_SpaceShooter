@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : RichMonoBehaviour
 {
        
     public void QuitGame()

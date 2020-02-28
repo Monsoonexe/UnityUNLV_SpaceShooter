@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class LivesController : MonoBehaviour
+public class LivesController : RichMonoBehaviour
 {
     public TextMeshProUGUI livesText;
 
