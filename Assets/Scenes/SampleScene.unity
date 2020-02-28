@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e40563ef4775074e9c4fcfa8159f856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  developerDescription: Please enter a description.
   uiText: {fileID: 945528473}
   playerController: {fileID: 1028343702}
 --- !u!1 &963194225
@@ -643,7 +644,7 @@ GameObject:
   - component: {fileID: 1028343703}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,11 +676,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f906129d7ca9944a5665cc7abd5307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  developerDescription: 'This is the player.
+
+    The player can get destroyed.  Maybe the "Score" and "Lives" values should be
+    stored on something more permanent.'
   moveSpeed: 75
   projectilePrefab: {fileID: 7243862955027011850, guid: f834c8cdc116c7a429548a8642fcc869,
     type: 3}
   score: 0
   lives: 3
+  projectileMoveSpeed: 150
 --- !u!65 &1028343703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -688,7 +694,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028343700}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 21.6754, y: 6.387085, z: 20.107582}
@@ -1016,6 +1022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444531d1b9b75dd48b1659d0aeb66793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  developerDescription: Please enter a description.
   livesText: {fileID: 1256017355}
   playerController: {fileID: 1028343702}
 --- !u!1 &1874047208
