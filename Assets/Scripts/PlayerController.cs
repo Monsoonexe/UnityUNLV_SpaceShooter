@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+/// <summary>
+/// The Player!
+/// </summary>
+public class PlayerController : RichMonoBehaviour
 {
+    /// <summary>
+    /// How fast does this object move?
+    /// </summary>
+    [Header("Player Controller")] // leaves a bold header in the Inspector
     public float moveSpeed = 5;
 
     public GameObject projectilePrefab;
@@ -9,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
 
     public int lives = 3;
+
+    /// <summary>
+    /// How fast a projectile fired from this object should move.
+    /// </summary>
+    public float projectileMoveSpeed = 150.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +38,17 @@ public class PlayerController : MonoBehaviour
 
     private void DoShooting()
     {
-        if (Input.GetKeyDown(KeyCode.Space))//the single fram the button was pressed
+        if (Input.GetKeyDown(KeyCode.Space))//if the space bar was pressed down this frame
         {
-            //
-            Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        }
+            //get a reference to the newly created projectile object
+            GameObject projectileGO = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
+            //get a reference to the component that exists on the newly created GO
+            ProjectileController projectileController = projectileGO.GetComponent<ProjectileController>();
+
+            //set starting values, like speed and owner
+            projectileController.Init(this.gameObject, projectileMoveSpeed);
+        }
     }
 
     private void DoMovement()
