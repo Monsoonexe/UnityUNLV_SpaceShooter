@@ -53,6 +53,7 @@ public class PlayerController : RichMonoBehaviour
 
     private void DoMovement()
     {
+        //vertical movement
         if (Input.GetKey(KeyCode.A)) // if "a" key is pressed
         {
             //move left
@@ -65,7 +66,8 @@ public class PlayerController : RichMonoBehaviour
             transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
         }
 
-        else if (Input.GetKey(KeyCode.W))
+        //Horizontal movement
+        if (Input.GetKey(KeyCode.W))
         {
             //Move forward
             transform.Translate(0, 0, moveSpeed * Time.deltaTime);
