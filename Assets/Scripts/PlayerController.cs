@@ -22,6 +22,9 @@ public class PlayerController : RichMonoBehaviour
     /// </summary>
     public float projectileMoveSpeed = 150.0f;
 
+    [Header("---Audio---")]
+    public AudioClip projectileClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,12 +45,13 @@ public class PlayerController : RichMonoBehaviour
         {
             //get a reference to the newly created projectile object
             GameObject projectileGO = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            //projectile.awake(), .ONenable(), and .start().
 
             //get a reference to the component that exists on the newly created GO
             ProjectileController projectileController = projectileGO.GetComponent<ProjectileController>();
 
             //set starting values, like speed and owner
-            projectileController.Init(this.gameObject, projectileMoveSpeed);
+            projectileController.Init(this.gameObject, projectileMoveSpeed, projectileClip);
         }
     }
 
