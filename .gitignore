@@ -61,3 +61,7 @@ crashlytics-build.properties
 #Add-ons
 Assets/TextMesh Pro
 Assets/TextMesh Pro.meta
+*.ogg
+*.url
+Assets/Audio
+Assets/Audio.meta
