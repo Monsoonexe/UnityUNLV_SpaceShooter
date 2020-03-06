@@ -22,6 +22,9 @@ public class ProjectileController : RichMonoBehaviour
     //member components
     private AudioSource myAudioSource;
 
+    /// <summary>
+    /// Use Awake to gather references!
+    /// </summary>
     private void Awake()
     {
         //gather references
@@ -29,7 +32,7 @@ public class ProjectileController : RichMonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Use start to initialize other Components
     /// </summary>
     void Start()
     {
@@ -37,20 +40,27 @@ public class ProjectileController : RichMonoBehaviour
         //Destroy(this.gameObject, lifeSpan);
     }
 
+    /// <summary>
+    /// When a GO gets enabled (like gameObject.SetActive(true);).
+    /// </summary>
     private void OnEnable()
     {
         //Debug.Log("OnEnable!");
-        myAudioSource.pitch = Random.Range(pitchMin, pitchMax);
-        //myAudioSource.Play(); - gets interrupted
+        myAudioSource.pitch = Random.Range(pitchMin, pitchMax);//pitch shifting!
+        //myAudioSource.Play(); - gets interrupted, call in Init() instead.
     }
 
+    /// <summary>
+    /// When a GO gets disabled (like gameObject.SetActive(false);).
+    /// </summary>
     private void OnDisable()
     {
         //Debug.Log("OnDisable!");
-
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updated gets called every frame.
+    /// </summary>
     void Update()
     {
         //move this object along the z-axis (forward)
@@ -59,6 +69,10 @@ public class ProjectileController : RichMonoBehaviour
         transform.Translate(0, 0, moveSpeed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Gets called when a TRIGGER collider collides with another collider.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name); //print to the console when collision happens.
@@ -75,16 +89,18 @@ public class ProjectileController : RichMonoBehaviour
     }
 
     /// <summary>
-    /// Initialize.  Call this when Instantiated to set starting values.
+    ///  Initialize.  Call this when Instantiated to set starting values.
     /// </summary>
+    /// <param name="owner">Don't kill the entity that fired this projectile.</param>
+    /// <param name="moveSpeed">Different enemies can shoot at different speeds.</param>
+    /// <param name="audioClip">Which sound should this projectile play.</param>
     public void Init(GameObject owner, float moveSpeed, AudioClip audioClip)
     {
         //this. pointer is used to differentiate between the "owner" local variable
         //and the "owner" that belongs to this class.
         this.owner = owner;
         this.moveSpeed = moveSpeed;
-        myAudioSource.clip = audioClip;
-        myAudioSource.Play();
-        
+        myAudioSource.clip = audioClip;//load clip 
+        myAudioSource.Play();//play clip
     }
 }
