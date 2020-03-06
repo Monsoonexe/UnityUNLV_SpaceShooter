@@ -13,13 +13,41 @@ public class ProjectileController : RichMonoBehaviour
     public float lifeSpan = 5;
 
     public GameObject owner;
-    
+
+    [Header("---Audio---")]
+    public float pitchMin = 1.0f;
+
+    public float pitchMax = 1.8f;
+
+    //member components
+    private AudioSource myAudioSource;
+
+    private void Awake()
+    {
+        //gather references
+        myAudioSource = this.gameObject.GetComponent<AudioSource>();
+    }
+
     /// <summary>
     /// 
     /// </summary>
     void Start()
     {
-        Destroy(this.gameObject, lifeSpan);
+        //Debug.Log("Start");
+        //Destroy(this.gameObject, lifeSpan);
+    }
+
+    private void OnEnable()
+    {
+        //Debug.Log("OnEnable!");
+        myAudioSource.pitch = Random.Range(pitchMin, pitchMax);
+        //myAudioSource.Play(); - gets interrupted
+    }
+
+    private void OnDisable()
+    {
+        //Debug.Log("OnDisable!");
+
     }
 
     // Update is called once per frame
@@ -49,11 +77,14 @@ public class ProjectileController : RichMonoBehaviour
     /// <summary>
     /// Initialize.  Call this when Instantiated to set starting values.
     /// </summary>
-    public void Init(GameObject owner, float moveSpeed)
+    public void Init(GameObject owner, float moveSpeed, AudioClip audioClip)
     {
         //this. pointer is used to differentiate between the "owner" local variable
         //and the "owner" that belongs to this class.
         this.owner = owner;
         this.moveSpeed = moveSpeed;
+        myAudioSource.clip = audioClip;
+        myAudioSource.Play();
+        
     }
 }
