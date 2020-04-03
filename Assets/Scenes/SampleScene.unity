@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 945528473}
   - component: {fileID: 945528475}
   m_Layer: 5
-  m_Name: Score Text (TMP)
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,11 +461,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 51.6
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 1
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
@@ -507,7 +507,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1015,10 +1015,10 @@ RectTransform:
   m_Father: {fileID: 278128334}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.65900004, y: 0.6907663}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -845, y: -2}
-  m_SizeDelta: {x: -1.1000061, y: -0.6000061}
+  m_AnchorMin: {x: 0, y: 0.6907663}
+  m_AnchorMax: {x: 0.3366918, y: 1}
+  m_AnchoredPosition: {x: 1.7000122, y: -2}
+  m_SizeDelta: {x: -0.1000061, y: -0.6000061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256017355
 MonoBehaviour:
@@ -1066,11 +1066,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 65.25
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 1
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
