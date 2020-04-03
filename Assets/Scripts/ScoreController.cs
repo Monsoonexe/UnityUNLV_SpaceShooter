@@ -9,16 +9,25 @@ public class ScoreController : RichMonoBehaviour
 
     public PlayerController playerController;
 
-    // Start is called before the first frame update
-    void Start()
+    //
+    private void OnEnable()
     {
-        
+        //subscribe to events
+        EventManager.onScoreUpdate.AddListener(UpdateUI);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        uiText.text = "Score: " + playerController.score;
-        
+        //unsubscribe to events
+        //ALWAYS UNSUBSCRIBE TO EVENTS
+        EventManager.onScoreUpdate.RemoveListener(UpdateUI);
+    }
+
+    /// <summary>
+    /// Custom function. Only called when the UI needs an update, not every frame.
+    /// </summary>
+    private void UpdateUI()
+    {
+        uiText.text = "Score: " + playerController.score;        
     }
 }
