@@ -31,6 +31,28 @@ public class PlayerController : RichMonoBehaviour
         //Debug.Log("Hello World");
     }
 
+    private void OnEnable()
+    {
+        //subscribe to events
+        EventManager.onEnemyDestroyed.AddListener(OnEnemyDestroyed);
+    }
+
+    private void OnDisable()
+    {
+        //unsubscribe to events
+        //ALWAYS UNSUBSCRIBE TO EVENTS
+        EventManager.onEnemyDestroyed.RemoveListener(OnEnemyDestroyed);
+    }
+
+    /// <summary>
+    /// Do these things when an enemy has been destroyed.
+    /// </summary>
+    private void OnEnemyDestroyed()
+    {
+        score += 10;//ten points to Gryffindor!
+        EventManager.onScoreUpdate.Invoke();//ring the bell to update UI.
+    }
+
     // Update is called once per frame
     void Update()
     {
