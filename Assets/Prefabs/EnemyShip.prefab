@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3821124158797130830}
   - component: {fileID: 8357661734775152179}
+  - component: {fileID: 1289313398857558903}
   - component: {fileID: 7415445992117704250}
   m_Layer: 0
   m_Name: EnemyShip
@@ -45,6 +46,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be45d94e64eeb34409d194dfac82129e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  developerDescription: Controls enemy behavior. the guy behind the wheel.
+  shootDelay: {x: 1, y: 3}
+--- !u!114 &1289313398857558903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530901220086924870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b38361b732762b4f95c78f6a0482934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  developerDescription: handles moving and shooting
+  moveSpeed: 20
+  projectilePrefab: {fileID: 7243862955027011850, guid: f834c8cdc116c7a429548a8642fcc869,
+    type: 3}
+  projectileMoveSpeed: 75
+  projectileClip: {fileID: 8300000, guid: 9b9edeb21d3d6084f947e2f6a4a14a4e, type: 3}
 --- !u!65 &7415445992117704250
 BoxCollider:
   m_ObjectHideFlags: 0
