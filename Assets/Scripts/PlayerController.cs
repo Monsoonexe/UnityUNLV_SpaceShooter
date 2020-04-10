@@ -6,29 +6,23 @@
 public class PlayerController : RichMonoBehaviour
 {
     /// <summary>
+    /// The tag the Player object has.
+    /// </summary>
+    public const string PLAYER_TAG = "Player";
+
+    /// <summary>
     /// How fast does this object move?
     /// </summary>
-    [Header("Player Controller")] // leaves a bold header in the Inspector
-    public float moveSpeed = 5;
+    private ShipController myShipController;
 
-    public GameObject projectilePrefab;
-
+    //These will be moved to scriptable objects in the future.
     public int score = 0;
 
     public int lives = 3;
 
-    /// <summary>
-    /// How fast a projectile fired from this object should move.
-    /// </summary>
-    public float projectileMoveSpeed = 150.0f;
-
-    [Header("---Audio---")]
-    public AudioClip projectileClip;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        //Debug.Log("Hello World");
+        myShipController = gameObject.GetComponent<ShipController>();
     }
 
     private void OnEnable()
@@ -61,48 +55,50 @@ public class PlayerController : RichMonoBehaviour
         DoShooting();
     }
 
+    /// <summary>
+    /// Tell ship to shoot.
+    /// </summary>
     private void DoShooting()
     {
         if (Input.GetKeyDown(KeyCode.Space))//if the space bar was pressed down this frame
         {
-            //get a reference to the newly created projectile object
-            GameObject projectileGO = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            //projectile.awake(), .ONenable(), and .start().
-
-            //get a reference to the component that exists on the newly created GO
-            ProjectileController projectileController = projectileGO.GetComponent<ProjectileController>();
-
-            //set starting values, like speed and owner
-            projectileController.Init(this.gameObject, projectileMoveSpeed, projectileClip);
+            myShipController.Shoot();
         }
     }
 
+    /// <summary>
+    /// Tell ship how to move.
+    /// </summary>
     private void DoMovement()
     {
+        Vector3 moveVector = new Vector3(0, 0, 0);
+
         //vertical movement
         if (Input.GetKey(KeyCode.A)) // if "a" key is pressed
         {
             //move left
-            transform.Translate(-moveSpeed * Time.deltaTime, 0, 0); // decrease x-value
+            moveVector += -transform.right;
         }
 
         else if (Input.GetKey(KeyCode.D))
         {
             //Move right
-            transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            moveVector += transform.right;
         }
 
         //Horizontal movement
         if (Input.GetKey(KeyCode.W))
         {
             //Move forward
-            transform.Translate(0, 0, moveSpeed * Time.deltaTime);
+            moveVector += transform.forward;
         }
 
         else if (Input.GetKey(KeyCode.S))
         {
             //Move back
-            transform.Translate(0, 0, -moveSpeed * Time.deltaTime);
+            moveVector += -transform.forward;
         }
+
+        myShipController.Move(moveVector);
     }
 }
