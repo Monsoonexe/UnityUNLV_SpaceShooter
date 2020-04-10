@@ -12,7 +12,7 @@ public class ProjectileController : RichMonoBehaviour
     /// </summary>
     public float lifeSpan = 5;
 
-    public GameObject owner;
+    public string owner;
 
     [Header("---Audio---")]
     public float pitchMin = 1.0f;
@@ -66,7 +66,8 @@ public class ProjectileController : RichMonoBehaviour
         //move this object along the z-axis (forward)
         //Time.deltaTime is the time between frames.  This is helpful to keep the bullet running
         //at a constant speed (through stutters or computers running at faster frame rate.).
-        transform.Translate(0, 0, moveSpeed * Time.deltaTime);
+        Vector3 moveVector = transform.forward;
+        transform.Translate(moveVector * moveSpeed * Time.deltaTime, Space.World);
     }
 
     /// <summary>
@@ -75,11 +76,11 @@ public class ProjectileController : RichMonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name); //print to the console when collision happens.
+        //Debug.Log(other.name); //print to the console when collision happens.
         //not needed, but useful to see information.
 
         //if this projectile has collided with it's owner (the object that fired it), then don't kill it
-        if (other.gameObject == owner)
+        if (other.CompareTag(owner))
         {
             return;
         }
@@ -94,7 +95,7 @@ public class ProjectileController : RichMonoBehaviour
     /// <param name="owner">Don't kill the entity that fired this projectile.</param>
     /// <param name="moveSpeed">Different enemies can shoot at different speeds.</param>
     /// <param name="audioClip">Which sound should this projectile play.</param>
-    public void Init(GameObject owner, float moveSpeed, AudioClip audioClip)
+    public void Init(string owner, float moveSpeed, AudioClip audioClip)
     {
         //this. pointer is used to differentiate between the "owner" local variable
         //and the "owner" that belongs to this class.
