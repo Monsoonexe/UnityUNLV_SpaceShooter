@@ -461,7 +461,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14.15
+  m_fontSize: 19.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -887,7 +887,6 @@ MonoBehaviour:
 
     The player can get destroyed.  Maybe the "Score" and "Lives" values should be
     stored on something more permanent.'
-  myShipController: {fileID: 1028343704}
   score: 0
   lives: 3
 --- !u!65 &1028343703
@@ -1086,7 +1085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217386539}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -90, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1127,7 +1126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8044389}
   m_AnchorMax: {x: 0.15862472, y: 1}
-  m_AnchoredPosition: {x: 2.2000122, y: -1.300003}
+  m_AnchoredPosition: {x: 2.2000732, y: -1.300003}
   m_SizeDelta: {x: 1, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256017355
@@ -1176,7 +1175,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20.85
+  m_fontSize: 28.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1563,6 +1562,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   developerDescription: Handles all enemies in the scene and spawning new ones.
   enemyPrefabs:
+  - {fileID: 4530901220086924870, guid: dd44426337fadc5419b980e54f0b1eba, type: 3}
+  - {fileID: 4530901220086924870, guid: 06ad2e9b27d28214e923881a2ecce560, type: 3}
+  - {fileID: 4530901220086924870, guid: dd44426337fadc5419b980e54f0b1eba, type: 3}
   - {fileID: 4530901220086924870, guid: dd44426337fadc5419b980e54f0b1eba, type: 3}
   spawnPoints:
   - {fileID: 1474306423}

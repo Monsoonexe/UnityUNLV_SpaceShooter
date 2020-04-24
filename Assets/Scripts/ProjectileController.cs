@@ -80,7 +80,7 @@ public class ProjectileController : RichMonoBehaviour
         //not needed, but useful to see information.
 
         //if this projectile has collided with it's owner (the object that fired it), then don't kill it
-        if (other.CompareTag(owner))
+        if (other.CompareTag(owner) || other.CompareTag("SpaceTrash"))
         {
             return;
         }

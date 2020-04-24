@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3821124158797130830}
-  - component: {fileID: 8357661734775152179}
+  - component: {fileID: 7392386282873981660}
   - component: {fileID: 1289313398857558903}
-  - component: {fileID: -635885789629733749}
   - component: {fileID: 7415445992117704250}
   m_Layer: 0
-  m_Name: EnemyShip
+  m_Name: Resurrector_EnemyShip
   m_TagString: EnemyShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,11 +30,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1263933944186569878}
+  - {fileID: 7701245605718068771}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8357661734775152179
+--- !u!114 &7392386282873981660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,10 +43,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4530901220086924870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be45d94e64eeb34409d194dfac82129e, type: 3}
+  m_Script: {fileID: 11500000, guid: 067781751693a334b83eafefae107109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  developerDescription: Controls enemy behavior. the guy behind the wheel.
+  developerDescription: Dead ships drop "scrap", and this ship will fly towards the
+    closest scrap and use it to create a new enemy in its place.
+  repairTime: 1
+  repairSpawnDistance: 15
+  basicShipPrefab: {fileID: 4530901220086924870, guid: dd44426337fadc5419b980e54f0b1eba,
+    type: 3}
   shootDelay: {x: 1, y: 3}
 --- !u!114 &1289313398857558903
 MonoBehaviour:
@@ -67,21 +71,6 @@ MonoBehaviour:
     type: 3}
   projectileMoveSpeed: 75
   projectileClip: {fileID: 8300000, guid: 9b9edeb21d3d6084f947e2f6a4a14a4e, type: 3}
---- !u!114 &-635885789629733749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4530901220086924870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c13f93f8a3db5e44808a12d48bdd6f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  developerDescription: When this ship dies, spawn this pickup.
-  pickupPrefab: {fileID: 8686711780861164185, guid: b404da7651d3d4c4f9c91d68f9ffa1c5,
-    type: 3}
 --- !u!65 &7415445992117704250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,79 +83,89 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 15.779596, y: 5.860983, z: 19.388494}
-  m_Center: {x: -0.0860548, y: 2.090726, z: 3}
---- !u!1001 &6120622753513287564
+  m_Center: {x: 1.65, y: 2.090726, z: 3}
+--- !u!1001 &3430307906569151801
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 3821124158797130830}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -927199367670048503, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_Name
-      value: spaceCraft6
+      value: spaceCraft5
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+    - target: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2299156660506411266, guid: b75f486278f3dad46902b25c4d64a79b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 90cf95c4d16319f4997a7ee0aec0c606, type: 2}
+    - target: {fileID: -2299156660506411266, guid: b75f486278f3dad46902b25c4d64a79b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e2fc341462e4d4418e9a158a8abe6b7, type: 2}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 07511bf1268e58c48a22ee302079bac3, type: 3}
---- !u!4 &1263933944186569878 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: b75f486278f3dad46902b25c4d64a79b, type: 3}
+--- !u!4 &7701245605718068771 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 07511bf1268e58c48a22ee302079bac3,
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b75f486278f3dad46902b25c4d64a79b,
     type: 3}
-  m_PrefabInstance: {fileID: 6120622753513287564}
+  m_PrefabInstance: {fileID: 3430307906569151801}
   m_PrefabAsset: {fileID: 0}
